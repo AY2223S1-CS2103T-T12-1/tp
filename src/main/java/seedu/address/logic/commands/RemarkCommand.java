@@ -12,6 +12,9 @@ import seedu.address.model.Model;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Remark;
 
+/**
+ * Edits the remarks of an existing person in the address book.
+ */
 public class RemarkCommand extends Command {
 
     public static final String COMMAND_WORD = "remark";
@@ -29,6 +32,10 @@ public class RemarkCommand extends Command {
     private final Index index;
     private final String remark;
 
+    /**
+     * @param index of the person in the filtered person list to be remarked
+     * @param remark the person's remark
+     */
     public RemarkCommand(Index index, String remark) {
         requireAllNonNull(index, remark);
         this.index = index;
@@ -54,7 +61,8 @@ public class RemarkCommand extends Command {
 
         model.setPerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-        return new CommandResult(String.format(MESSAGE_REMARK_PERSON_SUCCESS, editedPerson.getName(), editedPerson.getRemark()));
+        return new CommandResult(String.format(MESSAGE_REMARK_PERSON_SUCCESS, editedPerson.getName(),
+                editedPerson.getRemark()));
     }
 
     @Override
