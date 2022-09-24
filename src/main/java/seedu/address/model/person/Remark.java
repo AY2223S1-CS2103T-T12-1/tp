@@ -2,9 +2,17 @@ package seedu.address.model.person;
 
 import static java.util.Objects.requireNonNull;
 
+/**
+ * Represents a Remark.
+ */
 public class Remark {
     public final String value;
 
+    /**
+     * Returns a remark.
+     *
+     * @param remark Contents of the remark.
+     */
     public Remark(String remark) {
         requireNonNull(remark);
         value = remark;
