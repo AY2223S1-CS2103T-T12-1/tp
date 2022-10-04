@@ -31,8 +31,8 @@ public class ClassCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         model.enterFocusMode(targetClass);
-        return new CommandResult(String.format(
-                Messages.MESSAGE_ENTERED_FOCUS_MODE, targetClass));
+        return new CommandResult(String.format(Messages.MESSAGE_ENTERED_FOCUS_MODE, targetClass),
+                targetClass.toString());
     }
 
     @Override

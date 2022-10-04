@@ -3,6 +3,7 @@ package seedu.taassist.logic.commands;
 import static java.util.Objects.requireNonNull;
 
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Represents the result of a command execution.
@@ -17,6 +18,9 @@ public class CommandResult {
     /** The application should exit. */
     private final boolean exit;
 
+    /** The changed focus label, or None if no change happened. */
+    private Optional<String> changedFocusLabel;
+
     /**
      * Constructs a {@code CommandResult} with the specified fields.
      */
@@ -24,6 +28,7 @@ public class CommandResult {
         this.feedbackToUser = requireNonNull(feedbackToUser);
         this.showHelp = showHelp;
         this.exit = exit;
+        this.changedFocusLabel = Optional.empty();
     }
 
     /**
@@ -32,6 +37,15 @@ public class CommandResult {
      */
     public CommandResult(String feedbackToUser) {
         this(feedbackToUser, false, false);
+    }
+
+    /**
+     * Constructs a {@code CommandResult} with the specified {@code feedbackToUser},
+     * and a {@code changedFocusLabel}. Other fields are set to their default value.
+     */
+    public CommandResult(String feedbackToUser, String changedFocusLabel) {
+        this(feedbackToUser);
+        this.changedFocusLabel = Optional.of(changedFocusLabel);
     }
 
     public String getFeedbackToUser() {
