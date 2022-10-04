@@ -2,6 +2,8 @@ package seedu.taassist.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.Optional;
+
 import seedu.taassist.model.Model;
 import seedu.taassist.model.moduleclass.ModuleClass;
 
@@ -23,6 +25,6 @@ public class BackCommand extends Command {
         }
         ModuleClass focusedClass = model.getFocusedClass();
         model.exitFocusMode();
-        return new CommandResult(String.format(MESSAGE_SUCCESS, focusedClass));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, focusedClass), Optional.empty());
     }
 }
