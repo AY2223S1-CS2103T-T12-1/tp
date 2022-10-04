@@ -7,9 +7,9 @@
 
 <StackPane fx:id="placeHolder" styleClass="pane-with-border" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1">
     <TextArea fx:id="resultDisplay" editable="false" styleClass="result-display" />
-    <Label fx:id="focusLabel" styleClass="label-bright" text="" StackPane.alignment="TOP_RIGHT">
+    <Label fx:id="focusLabel" styleClass="label-bright"  StackPane.alignment="TOP_RIGHT">
         <StackPane.margin>
-            <Insets right="10.0" top="10.0" />
+            <Insets right="5.0" top="5.0" />
         </StackPane.margin>
     </Label>
 </StackPane>

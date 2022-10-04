@@ -18,7 +18,7 @@ public class CommandResult {
     /** The application should exit. */
     private final boolean exit;
 
-    /** The changed focus label, or None if no change happened. */
+    /** The changed focus label, or empty if focus should be cleared, or null if focus is unchanged. */
     private Optional<String> changedFocusLabel;
 
     /**
@@ -28,7 +28,7 @@ public class CommandResult {
         this.feedbackToUser = requireNonNull(feedbackToUser);
         this.showHelp = showHelp;
         this.exit = exit;
-        this.changedFocusLabel = Optional.empty();
+        // changedFocusLabel is null by default, which means the focus is unchanged.
     }
 
     /**
@@ -43,9 +43,9 @@ public class CommandResult {
      * Constructs a {@code CommandResult} with the specified {@code feedbackToUser},
      * and a {@code changedFocusLabel}. Other fields are set to their default value.
      */
-    public CommandResult(String feedbackToUser, String changedFocusLabel) {
+    public CommandResult(String feedbackToUser, Optional<String> changedFocusLabel) {
         this(feedbackToUser);
-        this.changedFocusLabel = Optional.of(changedFocusLabel);
+        this.changedFocusLabel = changedFocusLabel;
     }
 
     public String getFeedbackToUser() {
@@ -79,7 +79,7 @@ public class CommandResult {
         return feedbackToUser.equals(otherCommandResult.feedbackToUser)
                 && showHelp == otherCommandResult.showHelp
                 && exit == otherCommandResult.exit
-                && changedFocusLabel.equals(otherCommandResult.changedFocusLabel);
+                && Objects.equals(changedFocusLabel, otherCommandResult.changedFocusLabel);
     }
 
     @Override

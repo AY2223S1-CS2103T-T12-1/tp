@@ -152,6 +152,7 @@ public class MainWindow extends UiPart<Stage> {
             CommandResult commandResult = logic.execute(commandText);
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
+            resultDisplay.setFocusLabel(commandResult.getFocusLabel());
 
             if (commandResult.isShowHelp()) {
                 handleHelp();

@@ -2,6 +2,8 @@ package seedu.taassist.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.Optional;
+
 import seedu.taassist.commons.core.Messages;
 import seedu.taassist.logic.commands.exceptions.CommandException;
 import seedu.taassist.model.Model;
@@ -32,7 +34,7 @@ public class ClassCommand extends Command {
         requireNonNull(model);
         model.enterFocusMode(targetClass);
         return new CommandResult(String.format(Messages.MESSAGE_ENTERED_FOCUS_MODE, targetClass),
-                targetClass.toString());
+                Optional.of(targetClass.toString()));
     }
 
     @Override
