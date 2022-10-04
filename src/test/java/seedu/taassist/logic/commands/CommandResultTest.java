@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.Optional;
+
 import org.junit.jupiter.api.Test;
 
 public class CommandResultTest {
@@ -33,6 +35,15 @@ public class CommandResultTest {
 
         // different exit value -> returns false
         assertFalse(commandResult.equals(new CommandResult("feedback", false, true)));
+
+        // null changedFocusLabel -> returns true
+        assertTrue(commandResult.equals(new CommandResult("feedback", null)));
+
+        // different changedFocusLabel value -> returns false
+        assertFalse(commandResult.equals(new CommandResult("feedback", Optional.of("different"))));
+
+        // empty changedFocusLabel value -> returns false
+        assertFalse(commandResult.equals(new CommandResult("feedback", Optional.empty())));
     }
 
     @Test
@@ -50,5 +61,14 @@ public class CommandResultTest {
 
         // different exit value -> returns different hashcode
         assertNotEquals(commandResult.hashCode(), new CommandResult("feedback", false, true).hashCode());
+
+        // null changedFocusLabel -> returns same hashcode
+        assertEquals(commandResult.hashCode(), new CommandResult("feedback", null).hashCode());
+
+        // different changedFocusLabel value -> returns different hashcode
+        assertNotEquals(commandResult.hashCode(), new CommandResult("feedback", Optional.of("different")).hashCode());
+
+        // empty changedFocusLabel value -> returns same hashcode
+        assertEquals(commandResult.hashCode(), new CommandResult("feedback", Optional.empty()).hashCode());
     }
 }
