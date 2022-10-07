@@ -99,11 +99,11 @@
     -fx-padding: 0 0 0 0;
 }
 
-.list-cell:filled:even {
+.list-cell:filled:even .content {
     -fx-background-color: #3c3e3f;
 }
 
-.list-cell:filled:odd {
+.list-cell:filled:odd .content {
     -fx-background-color: #515658;
 }
 
@@ -118,6 +118,18 @@
 
 .list-cell .label {
     -fx-text-fill: white;
+}
+
+.list-cell .title .text {
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-font-size: 16px;
+    -fx-text-fill: #010504;
+}
+
+.list-cell .title > .arrow-button .arrow {
+    -fx-background-color: -fx-mark-highlight-color, -fx-mark-color;
+    -fx-background-insets: 0 0 0 0, 0;
+    -fx-padding: 0 0 0 0;
 }
 
 .cell_big_label {

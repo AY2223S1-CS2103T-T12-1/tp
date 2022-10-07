@@ -4,6 +4,7 @@ import java.util.Comparator;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.TitledPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
@@ -25,13 +26,12 @@ public class StudentCard extends UiPart<Region> {
      */
 
     public final Student student;
+    public final int index;
 
     @FXML
     private HBox cardPane;
     @FXML
-    private Label name;
-    @FXML
-    private Label id;
+    private TitledPane titledPane;
     @FXML
     private Label phone;
     @FXML
@@ -44,11 +44,11 @@ public class StudentCard extends UiPart<Region> {
     /**
      * Creates a {@code StudentCode} with the given {@code Student} and index to display.
      */
-    public StudentCard(Student student, int displayedIndex) {
+    public StudentCard(Student student, int index) {
         super(FXML);
         this.student = student;
-        id.setText(displayedIndex + ". ");
-        name.setText(student.getName().fullName);
+        this.index = index;
+        titledPane.setText(index + ". " + student.getName().fullName);
         phone.setText(student.getPhone().value);
         address.setText(student.getAddress().value);
         email.setText(student.getEmail().value);
@@ -71,7 +71,6 @@ public class StudentCard extends UiPart<Region> {
 
         // state check
         StudentCard card = (StudentCard) other;
-        return id.getText().equals(card.id.getText())
-                && student.equals(card.student);
+        return index == card.index && student.equals(card.student);
     }
 }
