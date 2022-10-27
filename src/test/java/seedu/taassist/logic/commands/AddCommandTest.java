@@ -14,10 +14,10 @@ import org.junit.jupiter.api.Test;
 
 import seedu.taassist.logic.commands.exceptions.CommandException;
 import seedu.taassist.logic.commands.result.CommandResult;
-import seedu.taassist.model.ModelStub;
 import seedu.taassist.model.ReadOnlyTaAssist;
 import seedu.taassist.model.TaAssist;
 import seedu.taassist.model.moduleclass.ModuleClass;
+import seedu.taassist.model.stubs.ModelStub;
 import seedu.taassist.model.student.Student;
 import seedu.taassist.testutil.StudentBuilder;
 
@@ -36,7 +36,8 @@ public class AddCommandTest {
 
         CommandResult commandResult = new AddCommand(validStudent).execute(modelStub);
 
-        assertEquals(String.format(AddCommand.MESSAGE_SUCCESS, validStudent), commandResult.getFeedbackToUser());
+        assertEquals(String.format(AddCommand.MESSAGE_SUCCESS, validStudent.getName()),
+                commandResult.getFeedbackToUser());
         assertEquals(Arrays.asList(validStudent), modelStub.studentsAdded);
     }
 
@@ -45,8 +46,8 @@ public class AddCommandTest {
         Student validStudent = new StudentBuilder().build();
         AddCommand addCommand = new AddCommand(validStudent);
         ModelStub modelStub = new ModelStubWithStudent(validStudent);
-
-        assertThrows(CommandException.class, AddCommand.MESSAGE_DUPLICATE_STUDENT, () -> addCommand.execute(modelStub));
+        String expectedMessage = String.format(AddCommand.MESSAGE_DUPLICATE_STUDENT, validStudent.getName());
+        assertThrows(CommandException.class, expectedMessage, () -> addCommand.execute(modelStub));
     }
 
     @Test

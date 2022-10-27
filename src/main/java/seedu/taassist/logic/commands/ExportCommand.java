@@ -51,7 +51,7 @@ public class ExportCommand extends Command {
         try {
             fileData = moduleClassToCsvString(focusedClass, students);
         } catch (AssertionError e) {
-            throw new CommandException(String.format(MESSAGE_DATA_RETRIEVAL_FAILED));
+            throw new CommandException(String.format(MESSAGE_DATA_RETRIEVAL_FAILED, fileName));
         }
 
         return new StorageCommandResult(new ExportCsvStorageAction(fileName, fileData));
