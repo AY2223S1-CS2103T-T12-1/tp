@@ -17,6 +17,7 @@ import javafx.collections.ObservableList;
 import seedu.taassist.commons.core.Messages;
 import seedu.taassist.commons.core.index.Index;
 import seedu.taassist.logic.commands.exceptions.CommandException;
+import seedu.taassist.logic.commands.result.CommandResult;
 import seedu.taassist.model.ModelStub;
 import seedu.taassist.model.moduleclass.ModuleClass;
 import seedu.taassist.model.student.Student;

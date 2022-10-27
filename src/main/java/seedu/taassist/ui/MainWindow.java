@@ -14,8 +14,9 @@ import javafx.stage.Stage;
 import seedu.taassist.commons.core.GuiSettings;
 import seedu.taassist.commons.core.LogsCenter;
 import seedu.taassist.logic.Logic;
-import seedu.taassist.logic.commands.CommandResult;
 import seedu.taassist.logic.commands.exceptions.CommandException;
+import seedu.taassist.logic.commands.result.CommandResult;
+import seedu.taassist.logic.commands.result.UiCommandResult;
 import seedu.taassist.logic.parser.exceptions.ParseException;
 
 /**
@@ -222,20 +223,23 @@ public class MainWindow extends UiPart<Stage> {
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
 
-            if (commandResult.isShowHelp()) {
-                handleHelp();
-            }
-
-            if (commandResult.isExit()) {
-                handleExit();
-            }
-
-            if (commandResult.isFocus()) {
-                handleFocusMode();
-            }
-
-            if (commandResult.isUnfocus()) {
-                handleUnfocusMode();
+            if (commandResult instanceof UiCommandResult) {
+                switch (((UiCommandResult) commandResult).getUiAction()) {
+                case UI_HELP:
+                    handleHelp();
+                    break;
+                case UI_EXIT:
+                    handleExit();
+                    break;
+                case UI_FOCUS:
+                    handleFocusMode();
+                    break;
+                case UI_UNFOCUS:
+                    handleUnfocusMode();
+                    break;
+                default:
+                    throw new CommandException("Unknown UI Command.");
+                }
             }
 
             return commandResult;

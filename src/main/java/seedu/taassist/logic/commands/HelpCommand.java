@@ -1,5 +1,9 @@
 package seedu.taassist.logic.commands;
 
+import static seedu.taassist.logic.commands.result.UiCommandResult.UiAction.UI_HELP;
+
+import seedu.taassist.logic.commands.result.CommandResult;
+import seedu.taassist.logic.commands.result.UiCommandResult;
 import seedu.taassist.model.Model;
 
 /**
@@ -16,6 +20,6 @@ public class HelpCommand extends Command {
 
     @Override
     public CommandResult execute(Model model) {
-        return new CommandResult(SHOWING_HELP_MESSAGE, true, false, false, false);
+        return new UiCommandResult(SHOWING_HELP_MESSAGE, UI_HELP);
     }
 }
