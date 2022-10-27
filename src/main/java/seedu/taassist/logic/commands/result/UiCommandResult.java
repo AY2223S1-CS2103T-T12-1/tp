@@ -12,7 +12,7 @@ public class UiCommandResult extends CommandResult {
     private final UiAction uiAction;
 
     /**
-     * Constructs a {@code CommandResult} with the specified {@code feedbackToUser} and {@code UiAction}.
+     * Constructs a {@code UiCommandResult} with the specified {@code feedbackToUser} and {@code UiAction}.
      */
     public UiCommandResult(String feedbackToUser, UiAction uiAction) {
         super(feedbackToUser);
@@ -37,7 +37,7 @@ public class UiCommandResult extends CommandResult {
 
         UiCommandResult otherCommandResult = (UiCommandResult) other;
         return this.getFeedbackToUser().equals(otherCommandResult.getFeedbackToUser())
-                && this.uiAction == otherCommandResult.uiAction;
+                && uiAction.equals(((UiCommandResult) other).uiAction);
     }
 
     @Override
