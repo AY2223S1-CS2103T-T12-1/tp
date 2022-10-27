@@ -1,6 +1,6 @@
 package seedu.taassist.logic.commands.exceptions;
 
-import seedu.taassist.logic.commands.storageaction.StorageAction;
+import seedu.taassist.logic.commands.actions.StorageAction;
 
 /**
  * Represents an error which occurs during action of a {@link StorageAction}.

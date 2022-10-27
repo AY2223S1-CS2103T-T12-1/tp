@@ -13,6 +13,13 @@ public class StorageActionResult extends CommandResult {
         super(feedbackToUser);
     }
 
+    /**
+     * Combines the previous feedback with the feedback from performing the storage action.
+     */
+    public String combineFeedback(String previousFeedback) {
+        return previousFeedback + getFeedbackToUser();
+    }
+
     @Override
     public boolean equals(Object other) {
         if (other == this) {

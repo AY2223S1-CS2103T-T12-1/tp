@@ -1,4 +1,4 @@
-package seedu.taassist.logic.commands.storageaction;
+package seedu.taassist.logic.commands.actions;
 
 import seedu.taassist.logic.commands.exceptions.StorageActionException;
 import seedu.taassist.logic.commands.result.StorageActionResult;

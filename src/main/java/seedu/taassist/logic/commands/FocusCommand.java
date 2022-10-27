@@ -2,11 +2,10 @@ package seedu.taassist.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.taassist.commons.core.Messages.MESSAGE_MODULE_CLASS_DOES_NOT_EXIST;
-import static seedu.taassist.logic.commands.result.UiCommandResult.UiAction.UI_FOCUS;
+import static seedu.taassist.logic.commands.actions.UiAction.UI_FOCUS;
 
 import seedu.taassist.logic.commands.exceptions.CommandException;
 import seedu.taassist.logic.commands.result.CommandResult;
-import seedu.taassist.logic.commands.result.UiCommandResult;
 import seedu.taassist.model.Model;
 import seedu.taassist.model.moduleclass.ModuleClass;
 
@@ -42,7 +41,7 @@ public class FocusCommand extends Command {
         }
 
         model.enterFocusMode(targetClass);
-        return new UiCommandResult(String.format(MESSAGE_ENTERED_FOCUS_MODE, targetClass), UI_FOCUS);
+        return new CommandResult(String.format(MESSAGE_ENTERED_FOCUS_MODE, targetClass), UI_FOCUS);
     }
 
     @Override

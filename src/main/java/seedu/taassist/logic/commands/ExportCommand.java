@@ -12,10 +12,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import seedu.taassist.logic.commands.actions.ExportCsvStorageAction;
 import seedu.taassist.logic.commands.exceptions.CommandException;
 import seedu.taassist.logic.commands.result.CommandResult;
-import seedu.taassist.logic.commands.result.StorageCommandResult;
-import seedu.taassist.logic.commands.storageaction.ExportCsvStorageAction;
 import seedu.taassist.model.Model;
 import seedu.taassist.model.moduleclass.ModuleClass;
 import seedu.taassist.model.moduleclass.StudentModuleData;
@@ -33,6 +32,7 @@ public class ExportCommand extends Command {
     public static final String COMMAND_WORD = "export";
 
     public static final String MESSAGE_DATA_RETRIEVAL_FAILED = "Unable to retrieve class data.";
+    public static final String EMPTY_FEEDBACK = "";
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
@@ -54,7 +54,7 @@ public class ExportCommand extends Command {
             throw new CommandException(String.format(MESSAGE_DATA_RETRIEVAL_FAILED, fileName));
         }
 
-        return new StorageCommandResult(new ExportCsvStorageAction(fileName, fileData));
+        return new CommandResult(EMPTY_FEEDBACK, new ExportCsvStorageAction(fileName, fileData));
     }
 
     /**

@@ -16,7 +16,6 @@ import seedu.taassist.commons.core.LogsCenter;
 import seedu.taassist.logic.Logic;
 import seedu.taassist.logic.commands.exceptions.CommandException;
 import seedu.taassist.logic.commands.result.CommandResult;
-import seedu.taassist.logic.commands.result.UiCommandResult;
 import seedu.taassist.logic.parser.exceptions.ParseException;
 
 /**
@@ -223,8 +222,8 @@ public class MainWindow extends UiPart<Stage> {
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
 
-            if (commandResult instanceof UiCommandResult) {
-                switch (((UiCommandResult) commandResult).getUiAction()) {
+            if (commandResult.hasStorageAction()) {
+                switch (commandResult.getUiAction()) {
                 case UI_HELP:
                     handleHelp();
                     break;
