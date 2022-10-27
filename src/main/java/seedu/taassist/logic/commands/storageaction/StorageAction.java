@@ -1,7 +1,7 @@
 package seedu.taassist.logic.commands.storageaction;
 
-import seedu.taassist.logic.commands.exceptions.CommandException;
-import seedu.taassist.logic.commands.result.CommandResult;
+import seedu.taassist.logic.commands.exceptions.StorageActionException;
+import seedu.taassist.logic.commands.result.StorageActionResult;
 import seedu.taassist.storage.Storage;
 
 /**
@@ -14,7 +14,7 @@ public interface StorageAction {
      *
      * @param storage {@code Storage} which the action should act on.
      * @return Feedback message of the action result for display.
-     * @throws CommandException If an error occurs during action execution.
+     * @throws StorageActionException If an error occurs during action execution.
      */
-    CommandResult act(Storage storage) throws CommandException;
+    StorageActionResult act(Storage storage) throws StorageActionException;
 }

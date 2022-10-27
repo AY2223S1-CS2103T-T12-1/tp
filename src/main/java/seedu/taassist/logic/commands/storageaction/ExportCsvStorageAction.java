@@ -8,8 +8,8 @@ import java.io.IOException;
 import java.nio.file.Path;
 
 import seedu.taassist.commons.util.FileUtil;
-import seedu.taassist.logic.commands.exceptions.CommandException;
-import seedu.taassist.logic.commands.result.CommandResult;
+import seedu.taassist.logic.commands.exceptions.StorageActionException;
+import seedu.taassist.logic.commands.result.StorageActionResult;
 import seedu.taassist.storage.Storage;
 
 /**
@@ -35,15 +35,15 @@ public class ExportCsvStorageAction implements StorageAction {
     }
 
     @Override
-    public CommandResult act(Storage storage) throws CommandException {
+    public StorageActionResult act(Storage storage) throws StorageActionException {
         String feedback;
         try {
             Path filePath = CSV_EXPORT_PATH.resolve(fileName + CSV_EXTENSION);
             FileUtil.writeToFile(filePath, fileData);
             feedback = String.format(MESSAGE_SUCCESS, fileName);
         } catch (IOException e) {
-            throw new CommandException(String.format(MESSAGE_EXPORT_FAILED, fileName));
+            throw new StorageActionException(String.format(MESSAGE_EXPORT_FAILED, fileName));
         }
-        return new CommandResult(feedback);
+        return new StorageActionResult(feedback);
     }
 }

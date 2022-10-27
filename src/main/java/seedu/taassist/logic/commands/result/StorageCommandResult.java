@@ -4,7 +4,9 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.Objects;
 
+import seedu.taassist.logic.commands.exceptions.StorageActionException;
 import seedu.taassist.logic.commands.storageaction.StorageAction;
+import seedu.taassist.storage.Storage;
 
 /**
  * Represents the result of a command execution that require actions from UI.
@@ -25,8 +27,13 @@ public class StorageCommandResult extends CommandResult {
         this.storageAction = storageAction;
     }
 
-    public StorageAction getStorageAction() {
-        return storageAction;
+    /**
+     * Perform the {@code StorageAction} on the specified {@code Storage} and return the result
+     * of the action.
+     */
+    public CommandResult performStorageAction(Storage storage) throws StorageActionException {
+        StorageActionResult storageActionResult = storageAction.act(storage);
+        return storageActionResult;
     }
 
     @Override
